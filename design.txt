@@ -6,8 +6,9 @@ MODE
 
 DISPLAY stories
     - Depending on our mode we display the number of stories to console
-    - If no mode is found display five stories
-    - Otherwise display each story that has the same frequency
+    - If no mode is found display five stories, if there is less than five
+      stories in the file, display all the stories
+    - Otherwise display each story that has the same score as the mode
 
 READ FILE
     - using the info stream, get the metadata for each story and store it in an array of 

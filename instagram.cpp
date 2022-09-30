@@ -1,4 +1,3 @@
-#include <iomanip>
 #include <iostream>
 #include <unordered_map>
 #include "instagram.h"
@@ -9,6 +8,7 @@ using namespace std;
 // keep a map of key-value pairs to keep track of 
 // frequencies of each score. 
 // return the mode or -1 if no mode is found
+// Angel drove here
 int findMode(Story *stories, int numStories) {
     int scores[numStories];
     for (int index = 0; index < numStories; index++) {
@@ -36,8 +36,11 @@ int findMode(Story *stories, int numStories) {
 // display the stories to console
 // go through each story that has the same mode, displaying title
 // and url, if no mode is found display the first five stories
+// Efren drove here
 void displayStories(Story *stories, int mode, int numStories) {
+    cout << "Mode: ";
     if (mode != -1) {
+        cout << mode << endl;
         for (int index = 0; index < numStories; index++) {
             Story *story = (stories + index);
             if (story->score == mode) {
@@ -47,8 +50,9 @@ void displayStories(Story *stories, int mode, int numStories) {
             }
         }
     } else {
-        static int FIVE_STORIES = 5;
-        for (int index = 0; index < FIVE_STORIES; index++) {
+        cout << "No mode was found." << endl;
+        numStories = (numStories < 5) ? numStories : 5;
+        for (int index = 0; index < numStories; index++) {
             Story *story = (stories + index);
             cout << endl;
             cout << story->title << endl;
@@ -60,6 +64,7 @@ void displayStories(Story *stories, int mode, int numStories) {
 // read each line from the file, always expecting 
 // the same format for each story
 // return a Story struct with the metadata from each of the stories
+// Efren drove here
 Story *readFile(ifstream &storiesFile, int numStories) {
     Story *stories = new Story[numStories];
     for (int index = 0; index < numStories; index++) {
@@ -73,6 +78,7 @@ Story *readFile(ifstream &storiesFile, int numStories) {
     return stories;
 }
 
+// Angel drove here
 int main() {
     string fileName;
     cout << "Please enter stories file name: ";
@@ -84,12 +90,6 @@ int main() {
     int numStories = stoi(line);
     Story *stories = readFile(storiesFile, numStories);
     int mode = findMode(stories, numStories);
-    cout << "Mode: ";
-    if (mode != -1) {
-        cout << mode << endl;
-    } else {
-        cout << "No mode was found." << endl;
-    }
     displayStories(stories, mode, numStories);
     delete [] stories;
 }
