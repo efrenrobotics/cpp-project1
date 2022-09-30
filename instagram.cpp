@@ -5,27 +5,10 @@
 
 using namespace std;
 
-void displayStories(Story *stories, int mode, int numStories) {
-    if (mode != -1) {
-        for (int index = 0; index < numStories; index++) {
-            Story *story = (stories + index);
-            if (story->score == mode) {
-                cout << endl;
-                cout << story->title << endl;
-                cout << story->url << endl;
-            }
-        }
-    } else {
-        static int FIVE_STORIES = 5;
-        for (int index = 0; index < FIVE_STORIES; index++) {
-            Story *story = (stories + index);
-            cout << endl;
-            cout << story->title << endl;
-            cout << story->url << endl;
-        }
-    }
-}
-
+// traverse through the total number of stories,
+// keep a map of key-value pairs to keep track of 
+// frequencies of each score. 
+// return the mode or -1 if no mode is found
 int findMode(Story *stories, int numStories) {
     int scores[numStories];
     for (int index = 0; index < numStories; index++) {
@@ -49,6 +32,34 @@ int findMode(Story *stories, int numStories) {
     return maxFrequency == 1 ? -1 : mode;
 }
 
+
+// display the stories to console
+// go through each story that has the same mode, displaying title
+// and url, if no mode is found display the first five stories
+void displayStories(Story *stories, int mode, int numStories) {
+    if (mode != -1) {
+        for (int index = 0; index < numStories; index++) {
+            Story *story = (stories + index);
+            if (story->score == mode) {
+                cout << endl;
+                cout << story->title << endl;
+                cout << story->url << endl;
+            }
+        }
+    } else {
+        static int FIVE_STORIES = 5;
+        for (int index = 0; index < FIVE_STORIES; index++) {
+            Story *story = (stories + index);
+            cout << endl;
+            cout << story->title << endl;
+            cout << story->url << endl;
+        }
+    }
+}
+
+// read each line from the file, always expecting 
+// the same format for each story
+// return a Story struct with the metadata from each of the stories
 Story *readFile(ifstream &storiesFile, int numStories) {
     Story *stories = new Story[numStories];
     for (int index = 0; index < numStories; index++) {

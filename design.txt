@@ -1,0 +1,17 @@
+First off we wanted to tackle the mode issue, figuring out the mode of the array
+MODE
+    - We decided to keep a map to have a list of key-value pairs to sort the mode
+      and see which stories correspond to which frequency.
+    - Then we return either a mode or a -1 indicating there is no mode in this set
+
+DISPLAY stories
+    - Depending on our mode we display the number of stories to console
+    - If no mode is found display five stories
+    - Otherwise display each story that has the same frequency
+
+READ FILE
+    - using the info stream, get the metadata for each story and store it in an array of 
+      story structs.
+
+g++ instagram.cpp -o insta  
+
