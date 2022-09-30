@@ -15,8 +15,8 @@ READ FILE
 
 g++ instagram.cpp -o insta  
 
-./insta
-./insta2
-./insta3
-./insta4
-./insta5
+./insta stories
+./insta stories2
+./insta stories3
+./insta stories4
+./insta stories5
